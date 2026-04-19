@@ -1,15 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { ClerkProvider } from "@clerk/nextjs";
+import Header from "@/components/Header";
+const inter = Inter({ subsets: ["latin"] });
+import { neobrutalism } from "@clerk/themes";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,11 +12,22 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
-    </html>
+    <ClerkProvider appearance={{theme: neobrutalism}} >
+      <html
+       lang="en" suppressHydrationWarning>
+       <body className={inter.className}>
+        <Header/>
+         <main className="min-h-screen">{children}</main>
+
+         <footer className="py-8 px-4 border-t">
+           <div className="max-w-6xl mx-auto flex justify-center items-center">
+             <p className="text-stone-500 text-sm">
+              made by Aliyaan
+               </p>
+            </div>
+          </footer>
+         </body>
+       </html>
+     </ClerkProvider>
   );
 }
