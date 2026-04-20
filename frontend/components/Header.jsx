@@ -1,11 +1,22 @@
 import React from 'react'
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-const Header = () => {
+import Link from 'next/link';
+import Image from 'next/image';
+const Header = async () => {
+    const user = null; // Replace with actual user state from Clerk
     return (
-        <header className="fixed top-0 w-full border-b border-stone-200 bg-stone50/80 backdrop-blur-md z-50 supports-backdrop-filter:bg-stone-50/60">
-            <nav className='container mx-auto px-4 h-16 flex items-center justify-between'>
-                logo
+        <header className="fixed top-0 w-full border-b border-stone-200 bg-stone-50/80 backdrop-blur-md z-50 supports-backdrop-filter:bg-stone-50/60">
+            <nav className='container w-full px-6  h-16 flex items-center justify-between'>
+                <Link href = {user ? "/dashboard" :"/"}>
+                <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    width={60}
+                    height={60}
+                    className="w-16"
+                />
+                </Link>
                 <div>Nav Links</div>
 
 
