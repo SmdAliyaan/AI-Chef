@@ -3,6 +3,8 @@ import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
 import Image from 'next/image';
+import { Cookie, Refrigerator } from 'lucide-react';
+import UserDropdown from './UserDropdown';
 const Header = async () => {
     const user = null; // Replace with actual user state from Clerk
     return (
@@ -17,13 +19,30 @@ const Header = async () => {
                     className="w-16"
                 />
                 </Link>
-                <div>Nav Links</div>
+                <div className="hidden md:flex space-x-8 text-sm font-medium text-stone-600">
+                    <Link 
+                    href="/recipes"
+                    className="hover:text-orange-600 tranisiton-colors flex gap-1.5 items-center"
+                    >
+                    <Cookie className='w-4 h-4'/>
+                    My Recipes
+                    </Link>
+
+                    <Link
+                    href="/pantry"
+                    className="hover:text-orange-600 trasition-colors flex gap-1.5"
+                    >
+                        <Refrigerator className='w-4 h-4'/>
+                        My Pantry
+                    </Link>
+
+                </div>
 
 
                 <div className="flex items-center space-x-4">
 
                     <Show when="signed-in">
-                        <UserButton />
+                        <UserDropdown />
                     </Show>
 
 
