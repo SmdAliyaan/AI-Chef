@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { PricingTable } from "@clerk/nextjs";
 
 export default function Home() {
   return (
@@ -8,6 +9,16 @@ export default function Home() {
       <Button variant="primary" size="xl">
         Subscribe to RoadsideCoder
       </Button>
+
+        <PricingTable checkoutProps={{
+          appearance:{
+            elements:{
+              drawerRoot:{
+                zIndex:2000,
+              }
+            }
+          }
+        }}/>
       </section>
     </div>
   );

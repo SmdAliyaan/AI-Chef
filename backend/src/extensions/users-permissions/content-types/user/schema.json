@@ -66,7 +66,7 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "clerkid": {
+    "clerkId": {
       "type": "string",
       "required": true,
       "unique": true
